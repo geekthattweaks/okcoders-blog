@@ -25,6 +25,45 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', routes);
 app.use('/users', users);
 
+app.get('/posts', function(req, res){
+  //display all posts
+  res.send(req.url);
+});
+
+app.post('/posts', function(req, res){
+  //new blog post
+  res.send(req.url);
+});
+
+app.get('/posts/new', function(req, res){
+  //return html for new post
+  res.send(req.url);
+});
+
+app.get('/posts/:id', function(req, res){
+  //display a specific post
+  var id = req.params.id;
+  res.send(id);
+});
+
+app.put('/posts/:id', function(req, res){
+  //modify a specific post
+  var id = req.params.id;
+  res.send(id);
+});
+
+app.delete('/posts/:id', function(req, res){
+  //delete a specific post
+  var id = req.params.id;
+  res.send(id);
+});
+
+app.get('/posts/:id/edit', function(req, res){
+  //return html to edit a specific post
+  var id = req.params.id;
+  res.send("sending " + req.params.id);
+});
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
